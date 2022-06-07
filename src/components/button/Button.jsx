@@ -17,6 +17,7 @@ const ButtonElement = styled.div`
   font-size: 14px;
   transition: all 0.3s ease;
   cursor: pointer;
+  text-align: center;
 
   &:hover,
   &:active,
