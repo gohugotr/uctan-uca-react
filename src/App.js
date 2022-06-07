@@ -3,6 +3,7 @@ import './App.css'
 import Button from './components/button/Button'
 import Input from './components/input/Input'
 import AstroForm from './components/form/AstroForm'
+import Listeler from './components/Listeler'
 
 function App() {
   const [text, setText]=useState('');
@@ -73,6 +74,7 @@ function App() {
         />
         <Button btnText='Giriş Yap  😄' onClick={() => Validation()} />
       </AstroForm>
+      <Listeler/>
     </div>
   )
 }
