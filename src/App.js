@@ -1,21 +1,36 @@
-import { useState } from 'react';
-import './App.css';
-import Button from './components/button/Button';
+import { useState } from 'react'
+import './App.css'
+import Button from './components/button/Button'
 import Input from './components/input/Input'
 import AstroForm from './components/form/AstroForm'
 
-
 function App() {
-
   const [text, setText]=useState('');
+  const [userForm, setuserForm] = useState({
+    userName: '',
+    userPass: '',
+  })
+
+  
+
+  const Validation = () =>{
+    if(userForm.userName==='' || userForm.userPass ===''){
+         setText('Hatalı Giriş');
+    }
+      else
+      {
+        setText('Başarılı Giriş')
+      }
+  }
 
   return (
     <div
       style={{
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ffe3fd',
+        backgroundColor: '#76b852',
         height: '100vh',
       }}
     >
@@ -34,17 +49,32 @@ function App() {
 
       <AstroForm>
         <h2>Giriş Formu</h2>
-        <Input value={text} placeholder='Kullanıcı adı' onChange={(e) => setText(e.target.value)} />
+        <p> {text} </p>
         <Input
-          type='password'
-          value={text}
-          placeholder='Parola'
-          onChange={(e) => setText(e.target.value)}
+          value={userForm.userName}
+          placeholder='Kullanıcı adı'
+          onChange={(e) =>
+            setuserForm({
+              ...userForm,
+              userName: e.target.value,
+            })
+          }
         />
-        <Button btnText='Giriş Yap  😄' onClick={() => alert('Merhaba')} />
+        <Input
+          value={userForm.userPass}
+          type='password'
+          placeholder='Parola'
+          onChange={(e) =>
+            setuserForm({
+              ...userForm,
+              userPass: e.target.value,
+            })
+          }
+        />
+        <Button btnText='Giriş Yap  😄' onClick={() => Validation()} />
       </AstroForm>
     </div>
   )
 }
 
-export default App;
+export default App
