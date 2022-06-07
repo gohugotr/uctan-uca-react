@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import './App.css';
-import HelloWorld from "./components/HelloWorld"
+import Button from './components/button/Button';
+import Input from './components/input/Input'
 
 function App() {
+
+  const [text, setText]=useState('');
+
   return (
     <div className='App'>
-      <HelloWorld butonad='Tıkla beni' resim='https://i.ytimg.com/vi/JAvOPQOMCzk/hqdefault.jpg'
+      {/* <HelloWorld butonad='Tıkla beni' resim='https://i.ytimg.com/vi/JAvOPQOMCzk/hqdefault.jpg'
       children = {
         <>
                 <img
@@ -14,7 +19,15 @@ function App() {
         <h2>Alt  children Öğe</h2>
         </>
       }
+      /> 
+      <Button />*/}
+      <div>{text}</div>
+      <Input
+        value={text}
+        placeholder='Bir metin giriniz'
+        onChange={(e) => setText(e.target.value)}
       />
+      <Button btnText='Giriş Yap  😄' onClick={() => alert('Merhaba')} />
     </div>
   )
 }
